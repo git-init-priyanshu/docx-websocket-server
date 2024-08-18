@@ -4,7 +4,6 @@ const number = require('lib0/number')
 const wss = new WebSocket.Server({ noServer: true })
 const setupWSConnection = require('./utils.js').setupWSConnection
 
-const host = process.env.HOST || 'localhost'
 const port = number.parseInt(process.env.PORT || '1234')
 
 const server = http.createServer((_request, response) => {
@@ -24,6 +23,6 @@ server.on('upgrade', (request, socket, head) => {
   })
 })
 
-server.listen(port, host, () => {
-  console.log(`running at '${host}' on port ${port}`)
+server.listen(port, () => {
+  console.log(`running on port ${port}`)
 })
